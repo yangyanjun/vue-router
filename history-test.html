@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a onclick="goA()">a页面</a>
+    <a onclick="goB()">b页面</a>
+    <div id="app"></div>
+    <script>
+        let fn = () => {
+            app.innerHTML = window.location.pathname;
+        }
+        function goA() {
+            history.pushState({}, null, '/a')
+            // fn()
+        }
+        function goB() {
+            history.pushState({}, null, '/b')
+            // fn()
+        }
+        // 只对浏览器的前进和后退进行处理
+        window.addEventListener('popstate', () => {
+            fn();
+        })
+    </script>
+</body>
+</html>
